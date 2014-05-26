@@ -1,0 +1,22 @@
+{
+    "quizes": [
+        {
+            "time": 1,
+            "question": "Is this the first question?",
+            "answer": "yes",
+            "tries": 3
+        },
+        {
+            "time": 3,
+            "question": "Is this the sixth question?",
+            "answer": "no",
+            "tries": 1
+        },
+        {
+            "time": 5,
+            "question": "Is this the third question?",
+            "answer": "yes",
+            "tries": 5
+        }
+    ]
+}
