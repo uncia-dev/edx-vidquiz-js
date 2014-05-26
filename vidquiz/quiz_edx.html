@@ -1,0 +1,75 @@
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="vidquiz.js"></script>
+<script src="http://popcornjs.org/code/dist/popcorn-complete.min.js"></script>
+
+<script>
+
+	// Blank quiz object. Has no questions
+	var quiz = new Quiz();
+
+/*
+	// Grab quiz from a JSON file
+	$.getJSON('quiz.json', function(data) {
+		for (var i in data.quiz) {
+	        quiz.add(data.quiz[i].time, data.quiz[i].question,
+					   data.quiz[i].answer, data.quiz[i].tries);
+	    }
+	});
+*/
+
+	// Fill in quiz manually
+	quiz.add(1, "Is this the first question? [3 tries (default), answer is yes]", "yes");
+	quiz.add(3, "Is this the tenth question? [1 try, answer is no]", "no", 1);
+	quiz.add(5, "Is this the third question? [5 tries, answer is yes]", "yes", 3);
+
+	// IDs of elements that make up the question form
+	elements = ["quiz_space", "question", "answer",	"student_answer",
+				"tries", "btn_submit", "btn_skip", "btn_continue",
+				"vid_lecture"];
+
+	// Prints all questions to console when clicked
+	$('#printall').click(function() {
+		console.log("---");
+		quiz.print();
+	});
+
+	// Popcorn object that affects video lecture
+	var corn = Popcorn("#vid_lecture");
+
+	// Add cue times for each question
+	Popcorn.forEach(quiz.grab(), function(v, k, i) {
+		corn.cue(v[0], function() { popQuiz(v[1], corn, elements); });
+	});
+
+	// $('#DEV').hide(); // hide development-related elements
+	
+</script>
+
+<div id="lecture">
+
+	<!-- Video player affected by Popcorn.js -->
+	<video height="180" width="300" id="vid_lecture" controls>
+		<source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.ogv">				
+	</video>
+
+	<!-- Question form to be displayed for each question -->
+	<div id="quiz_space" hidden>
+		<p id="question"></p>
+		<p id="answer"></p>
+		<input id="student_answer" type="text">
+		<p id="tries"></p>
+		<div>
+			<input id="btn_submit" type="button" value="Submit">
+			<input id="btn_skip" type="button" value="Skip">
+			<input id="btn_continue" type="button" value="Continue">
+		</div>
+
+	</div>
+
+	<!-- Development related buttons, fields, etc -->
+	<div id="DEV">
+		<p>Development stuff:</p>
+		<input id="printall" type="button" value="PRINT TO CONSOLE">
+	</div>
+
+</div>
