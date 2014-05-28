@@ -27,7 +27,7 @@
 			// Fill in quiz manually
 			quiz.add(1, "Is this the first question? [3 tries (default), answer is yes]", "yes");
 			quiz.add(3, "Is this the tenth question? [1 try, answer is no]", "no", 1);
-			quiz.add(5, "Is this the third question? [5 tries, answer is yes]", "yes", 3);
+			quiz.add(5, "Is this the third question? [5 tries, answer is yes]", "yes", 5);
 
 			// IDs of elements that make up the question form
 			elements = ["quiz_space", "question", "answer",	"student_answer",
@@ -63,7 +63,7 @@
 		<div id="lecture">
 
 			<!-- Video player affected by Popcorn.js -->
-			<video height="180" width="300" id="vid_lecture" controls>
+			<video height="320" width="512" id="vid_lecture" controls>
 				<source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.ogv">				
 			</video>
 
@@ -81,12 +81,13 @@
 
 			</div>
 
-			<!-- Development related buttons, fields, etc -->
-			<div id="DEV">
-				<p>Development stuff:</p>
-				<input id="printall" type="button" value="PRINT TO CONSOLE">
-			</div>
+		</div>
 
+		<!-- Development related buttons, fields, etc -->
+		<div id="DEV">
+			<hr/>
+			<p>Development stuff:</p>
+			<input id="printall" type="button" value="PRINT TO CONSOLE">
 		</div>
 
 	</body>
