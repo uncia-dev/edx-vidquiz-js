@@ -12,7 +12,7 @@ function QuizQuestion(question = '', answer = '', tries = 3) {
 	var question = question; // question being asked
 	var answer = answer; // answer to the question
 	var result = false; // student result (fail by default)
-	var completed = false; // flag for whether or not student dealt with this
+	var touched = false; // flag for whether or not student dealt with this
 						   // question
 
 	/* Getter for tries */
@@ -35,25 +35,25 @@ function QuizQuestion(question = '', answer = '', tries = 3) {
 		return result;
 	};
 
-	/* Set status of this question to completed */
-	this.complete = function() {
-		completed = true;
+	/* Set status of this question to touched */
+	this.touch = function() {
+		touched = true;
 	};
 
-	/* Getter for completed */
-	this.isCompleted = function() {
-		return completed;
+	/* Getter for touched */
+	this.isTouched = function() {
+		return touched;
 	};
 
 	/* Submit student answer and return validity of answer */
 	this.submit = function(ans = '') {
 
 		// Only process submission if the question was never attempted
-		if (!completed) {
+		if (!touched) {
 
 			tries--; // decrement tries
 			result = this.validate(ans); // validate answer
-			if (tries == 0 || result) this.complete();
+			if (tries == 0 || result) this.touch();
 
 		}
 
@@ -68,16 +68,16 @@ function QuizQuestion(question = '', answer = '', tries = 3) {
 		return (answer === ans);
 	};
 
-	/* Student skips the question. Sets tries to 0 and complete to true */
+	/* Student skips the question. Sets tries to 0 and touched to true */
 	this.skip = function() {
 		tries = 0;
-		this.complete();
+		this.touch();
 	};
 
 	/* For development purposes: Output QuizQuestion variables */
 	this.listVars = function() {
 		return "[Question: " + question + ", Answer: " + answer +
-				 ", Result: " + result + ", Tries left: " + tries + ", Was it attempted? " + completed + "]";
+				 ", Result: " + result + ", Tries left: " + tries + ", Was it attempted? " + touched + "]";
 	};
 
 };
@@ -104,7 +104,7 @@ function QuizController(question, popcorn, elements) {
 	var str_NoTriesLeft = "No more tries left.";
 	var str_Correct = "Correct! ";
 	var str_QuizAnswer = "The answer is: \"" + question.getAnswer() + "\".";
-	var str_AlreadyDone = "You have already completed this question.";
+	var str_AlreadyDone = "You have already touched this question.";
 	var str_AlreadyAttempted = "You have already attempted this question.";
 	
 	/* Components of the elements arrays
@@ -125,7 +125,7 @@ function QuizController(question, popcorn, elements) {
 	$("#"+elements[7]).hide(); // hide Continue button by default
 
 	// Did the student already complete this question?
-	if (question.isCompleted()) {
+	if (question.isTouched()) {
 
 		// The student answered correctly before; show the answer
 		if (question.getResult()) $("#"+elements[2]).text(str_AlreadyDone + 
@@ -187,7 +187,7 @@ function QuizController(question, popcorn, elements) {
 		$("#"+elements[7]).show(); // show continue button
 
 		// Only accept answers if the question was never attempted
-		if (!question.isCompleted()) {
+		if (!question.isTouched()) {
 
 			$("#"+elements[4]).show(); // hide tries
 
@@ -227,7 +227,7 @@ function QuizController(question, popcorn, elements) {
 	Hide question form and continue playing video
 	*/
 	this.resume = function() {
-		question.complete(); // force complete current question
+		question.touch(); // touch question
 		this.hide(); // hide question and show video
 		this.reset(); // clear question form
 	};
