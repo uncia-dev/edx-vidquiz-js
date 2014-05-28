@@ -1,5 +1,16 @@
 #lecture {
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background: #F0F0F0;
+  text-align: center;
+  padding: 15px;
+  height: 320px;
+  }
 
-text-align: center;
+#quiz_space {
 
+}
+
+#DEV {
+  text-align: center;
+  color:green;
 }
