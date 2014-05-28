@@ -1,6 +1,5 @@
 """
-Python version of quiz.js
-Will be integrated into an edX XBlock
+Python version of quiz.js. Might get implemented into XBlock
 """
 
 
