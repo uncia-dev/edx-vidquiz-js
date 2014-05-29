@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+
+<!-- Rename this file when you deploy it for an edX course! -->
+
 <html>
 
 	<head>
@@ -13,21 +16,23 @@
 
 			// Blank quiz object. Has no questions
 			var quiz = new Quiz();
+			// Grab filename of this HTML document, sans extension
+			quiz_questions = ((location.pathname.split("/").slice(-1)) + '').split(".")[0];
 
-/*
-			// Grab quiz from a JSON file
-			$.getJSON('quiz.json', function(data) {
+			// Grab quiz from a JSON file matching this document's name
+			$.getJSON(quiz_questions + '.json', function(data) {
 				for (var i in data.quiz) {
 			        quiz.add(data.quiz[i].time, data.quiz[i].question,
 							   data.quiz[i].answer, data.quiz[i].tries);
 			    }
 			});
-*/
 
-			// Fill in quiz manually
+/*
+			// You can fill in manually as well
 			quiz.add(1, "Is this the first question? [3 tries (default), answer is yes]", "yes");
 			quiz.add(3, "Is this the tenth question? [1 try, answer is no]", "no", 1);
 			quiz.add(5, "Is this the third question? [5 tries, answer is yes]", "yes", 5);
+*/
 
 			// IDs of elements that make up the question form
 			elements = ["quiz_space", "question", "answer",	"student_answer",
@@ -50,7 +55,7 @@
 					corn.cue(v[0], function() { popQuiz(v[1], corn, elements); });
 				});
 
-				// $('#DEV').hide(); // hide development-related elements
+				$('#DEV').hide(); // hide development-related elements
 				
 			});
 
