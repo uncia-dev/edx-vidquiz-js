@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<link rel="stylesheet" href="vidquiz.css" type="text/css"/>
+		<script src="jquery.min.js"></script>
+		<script src="vidquiz.js"></script>
+		<script src="popcorn-complete.min.js"></script>
+		<!-- Set js file containing quiz manually -->
+		<script src="quiz.js"></script>
+
+		<script>
+
+			// IDs of elements that make up the question form
+			elements = ["quiz_space", "question", "answer",	"student_answer",
+						"tries", "btn_submit", "btn_skip", "btn_continue",
+						"vid_lecture"];
+
+			// Create event listener for PopCorn
+			document.addEventListener("DOMContentLoaded", function() {
+
+				// Popcorn object that affects video lecture
+				var corn = Popcorn("#vid_lecture");
+
+				// Add cue times for each question
+				Popcorn.forEach(quiz.grab(), function(v, k, i) {
+					corn.cue(v[0], function() { popQuiz(v[1], corn, elements); });
+				});
+			
+			});
+
+		</script>
+
+	</head>
+
+	<body>
+
+		<div id="video_lecture">
+
+			<!-- Video player affected by Popcorn.js -->
+			<video height="320" width="512" id="vid_lecture" controls>
+				<source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.ogv">				
+			</video>
+
+			<!-- Question form to be displayed for each question -->
+			<div id="quiz_space" hidden>
+				<p id="question"></p>
+				<p id="answer"></p>
+				<input id="student_answer" type="text">
+				<p id="tries"></p>
+				<div>
+					<input id="btn_submit" type="button" value="Submit">
+					<input id="btn_skip" type="button" value="Skip">
+					<input id="btn_continue" type="button" value="Continue">
+				</div>
+
+			</div>
+
+		</div>
+
+	</body>
+
+</html>
