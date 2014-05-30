@@ -29,6 +29,7 @@ Setup
 	[trigger time, question, answer, number of tries (optional)]
 
 3). Upload all files to an edX course and remember the static address of quiz.html
+	- It is a wise idea to lock both quiz.html and quiz.js to prevent non-staff access
 
 4). In your edX course, create a HTML->IFrame component in the unit you wish
 	- set the IFrame source to the static address of quiz.html
