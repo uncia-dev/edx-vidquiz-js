@@ -4,15 +4,11 @@ VidQuiz.js
 About
 -----
 
-This tiny JS application creates a video player that at pre-set times asks the user a question, and
-awaits an answer. The purpose of this application is to be used in edX as an IFrame component in a
-course unit.
+This tiny JS application creates a video player that at pre-set times asks the user a question, and awaits an answer. The purpose of this application is to be used in edX as an IFrame component in a course unit.
 
-The functionality is really basic, and it might include a grading feature soon that updates a student's
-profile on edX. 
+The functionality is really basic, and it might include a grading feature soon that updates a student's profile on edX. 
 
-Configuration is all manual and there is no editor included, but an XBlock might be created in the near
-future that has all of these functionalities.
+Configuration is all manual and there is no editor included, but an XBlock might be created in the near future that has all of these functionalities.
 
 This application was made for Seneca College, but you may use the code for your own purposes.
 
