@@ -104,7 +104,7 @@ function QuizController(question, popcorn, elements) {
 	var str_NoTriesLeft = "No more tries left.";
 	var str_Correct = "Correct! ";
 	var str_QuizAnswer = "The answer is: \"" + question.getAnswer() + "\".";
-	var str_AlreadyDone = "You have already touched this question.";
+	var str_AlreadyDone = "You have already attempted this question.";
 	var str_AlreadyAttempted = "You have already attempted this question.";
 	
 	/* Components of the elements arrays
