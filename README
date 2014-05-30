@@ -4,35 +4,32 @@ VidQuiz.js
 About
 -----
 
-This tiny JS application creates a video player that at pre-set times asks
-the user a question, and awaits an answer. The purpose of this application
-is to be used in edX as an IFrame component in a course unit.
+This tiny JS application creates a video player that at pre-set times asks the user a question, and
+awaits an answer. The purpose of this application is to be used in edX as an IFrame component in a
+course unit.
 
-The functionality is really basic, and it might include a grading feature soon
-that updates a student's profile on edX. 
+The functionality is really basic, and it might include a grading feature soon that updates a student's
+profile on edX. 
 
-Configuration is all manual and there is no editor included, but an XBlock 
-might be created in the near future that has all of these functionalities.
+Configuration is all manual and there is no editor included, but an XBlock might be created in the near
+future that has all of these functionalities.
 
-This application was made for Seneca College, but you may use or alter the code
-for your own purposes.
+This application was made for Seneca College, but you may use the code for your own purposes.
 
 
 Setup
 -----
 
 1). Rename quiz.html and quiz.js to whatever names you wish
-	  - ensure that in quiz.html, line 12 matches quiz.js
+	- ensure that in quiz.html, line 12 matches quiz.js
 
 2). Modify quiz.js to contain the quiz questions you wish
-  	- simply add new entries in the quiz_questions array
-  	- the pattern used is as follows:
-	  	[trigger time, question, answer, number of tries (optional)]
+	- simply add new entries in the quiz_questions array
+	- the pattern used is as follows:
+	[trigger time, question, answer, number of tries (optional)]
 
-3). Upload all files to an edX course and remember the static address of
-    quiz.html
+3). Upload all files to an edX course and remember the static address of quiz.html
 
 4). In your edX course, create a HTML->IFrame component in the unit you wish
-	  - set the IFrame source to the static address of quiz.html
-  	- you may want to adjust the width and height of the IFrame to fit the
-	    video being played
+	- set the IFrame source to the static address of quiz.html
+	- you may want to adjust the width and height of the IFrame to fit the video being played
