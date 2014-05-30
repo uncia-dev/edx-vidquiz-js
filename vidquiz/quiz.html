@@ -1,7 +1,4 @@
 <!DOCTYPE html>
-
-<!-- Rename this file when you deploy it for an edX course! -->
-
 <html>
 
 	<head>
@@ -11,41 +8,18 @@
 		<script src="jquery.min.js"></script>
 		<script src="vidquiz.js"></script>
 		<script src="popcorn-complete.min.js"></script>
+		<!-- Set js file containing quiz manually -->
+		<script src="quiz.js"></script>
 
 		<script>
-
-			// Blank quiz object. Has no questions
-			var quiz = new Quiz();
-			// Grab filename of this HTML document, sans extension
-			quiz_questions = ((location.pathname.split("/").slice(-1)) + '').split(".")[0];
-
-			// Grab quiz from a JSON file matching this document's name
-			$.getJSON(quiz_questions + '.json', function(data) {
-				for (var i in data.quiz) {
-			        quiz.add(data.quiz[i].time, data.quiz[i].question,
-							   data.quiz[i].answer, data.quiz[i].tries);
-			    }
-			});
-
-/*
-			// You can fill in manually as well
-			quiz.add(1, "Is this the first question? [3 tries (default), answer is yes]", "yes");
-			quiz.add(3, "Is this the tenth question? [1 try, answer is no]", "no", 1);
-			quiz.add(5, "Is this the third question? [5 tries, answer is yes]", "yes", 5);
-*/
 
 			// IDs of elements that make up the question form
 			elements = ["quiz_space", "question", "answer",	"student_answer",
 						"tries", "btn_submit", "btn_skip", "btn_continue",
 						"vid_lecture"];
 
+			// Create event listener for PopCorn
 			document.addEventListener("DOMContentLoaded", function() {
-
-				// Prints all questions to console when clicked
-				$('#printall').click(function() {
-					console.log("---");
-					quiz.print();
-				});
 
 				// Popcorn object that affects video lecture
 				var corn = Popcorn("#vid_lecture");
@@ -54,9 +28,7 @@
 				Popcorn.forEach(quiz.grab(), function(v, k, i) {
 					corn.cue(v[0], function() { popQuiz(v[1], corn, elements); });
 				});
-
-				$('#DEV').hide(); // hide development-related elements
-				
+			
 			});
 
 		</script>
@@ -65,7 +37,7 @@
 
 	<body>
 
-		<div id="lecture">
+		<div id="video_lecture">
 
 			<!-- Video player affected by Popcorn.js -->
 			<video height="320" width="512" id="vid_lecture" controls>
@@ -86,13 +58,6 @@
 
 			</div>
 
-		</div>
-
-		<!-- Development related buttons, fields, etc -->
-		<div id="DEV">
-			<hr/>
-			<p>Development stuff:</p>
-			<input id="printall" type="button" value="PRINT TO CONSOLE">
 		</div>
 
 	</body>
