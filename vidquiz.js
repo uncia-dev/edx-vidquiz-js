@@ -117,12 +117,14 @@ function QuizController(question, popcorn, elements) {
 		elements[6] - Skip Button
 		elements[7] - Continue Button
 		elements[8] - Video area
+		elements[9] - Correct/Incorrect Icon
 	*/
 
 	$("#"+elements[1]).text(question.getQuestion()); // set question
 	$("#"+elements[2]).text(""); // keep answer text blank at first
 	$("#"+elements[3]).text(""); // keep student answer box blank at first
 	$("#"+elements[7]).hide(); // hide Continue button by default
+	$("#"+elements[9]).hide(); // hide correct/incorrect icon
 
 	// Did the student already complete this question?
 	if (question.isTouched()) {
@@ -156,6 +158,8 @@ function QuizController(question, popcorn, elements) {
 		$("#"+elements[5]).show(); // show submit button
 		$("#"+elements[6]).show(); // show skip button
 		$("#"+elements[7]).hide(); // hide continue button
+		$("#"+elements[9]).attr("src", "");
+		$("#"+elements[9]).hide(); // hide correct/incorrect icon
 
 	};
 
@@ -203,11 +207,16 @@ function QuizController(question, popcorn, elements) {
 
 			// Submit student answer
 			if (question.submit($("#"+elements[3]).val())) { // correct answer
+				//$("#"+elements[9]).attr("src", "icon-correct.png");
+				$("#"+elements[9]).attr("src", "icon-correct.png");
+				$("#"+elements[9]).show();
 				$("#"+elements[2]).text(str_Correct + str_QuizAnswer); // display answer
 				$("#"+elements[3]).hide(); // hide student answer
 				$("#"+elements[4]).hide(); // hide tries
 				$("#"+elements[5]).hide(); // hide submit button
 			} else { // wrong answer
+				$("#"+elements[9]).attr("src", "icon-incorrect.png");
+				$("#"+elements[9]).show();
 				$("#"+elements[2]).text(str_WrongAnswer); // display error
 			}
 
