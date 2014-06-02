@@ -9,7 +9,7 @@
 		<script src="vidquiz.js"></script>
 		<script src="popcorn-complete.min.js"></script>
 		<!-- Set js file containing quiz manually -->
-		<script src="quiz.js"></script>
+		<script src="demo.js"></script>
 
 		<script>
 
@@ -23,6 +23,8 @@
 
 				// Popcorn object that affects video lecture
 				var corn = Popcorn("#vid_lecture");
+				
+				corn.mute();
 
 				// Add cue times for each question
 				Popcorn.forEach(quiz.grab(), function(v, k, i) {
@@ -39,9 +41,11 @@
 
 		<div id="video_lecture">
 
+			<p>Quick Video Quiz for edX Demo</p>
+		
 			<!-- Video player affected by Popcorn.js -->
-			<video height="320" width="512" id="vid_lecture" controls>
-				<source src="http://videos.mozilla.org/serv/webmademovies/popcornplug.ogv">
+			<video height="288" width="512" id="vid_lecture" controls>
+				<source src="welcome_to_edx.mp4">
 			</video>
 
 			<!-- Question form to be displayed for each question -->
