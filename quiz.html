@@ -16,7 +16,7 @@
 			// IDs of elements that make up the question form
 			elements = ["quiz_space", "question", "answer",	"student_answer",
 						"tries", "btn_submit", "btn_skip", "btn_continue",
-						"vid_lecture"];
+						"vid_lecture", "answer_icon"];
 
 			// Create event listener for PopCorn
 			document.addEventListener("DOMContentLoaded", function() {
@@ -47,7 +47,10 @@
 			<!-- Question form to be displayed for each question -->
 			<div id="quiz_space" hidden>
 				<p id="question"></p>
-				<p id="answer"></p>
+				<p>
+					<span id="answer"></span>
+					<img id="answer_icon" src="">
+				</p>
 				<input id="student_answer" type="text">
 				<p id="tries"></p>
 				<div>
