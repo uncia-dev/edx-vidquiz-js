@@ -12,7 +12,7 @@ Configuration is all manual and there is no editor included, but an XBlock might
 
 This application was made for Seneca College, but you may use the code for your own purposes.
 
-There will be no further updates, as I have focused on turning this module into an edX XBlock. See https://github.com/uw-ray/edx-vidquiz .
+There will be no further updates, as I have focused on turning this module into an edX XBlock. See https://github.com/uw-ray/edx-vidquiz.
 
 Setup
 -----
